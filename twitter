@@ -1,0 +1,14 @@
+def main():
+    word = input("Input: ")
+    print(shorten(word))
+
+def shorten(str=""):
+    result = ""
+    for s in str:
+        if s.lower() in "aeiou": continue
+        else:
+            result+= s
+    return result
+
+if __name__ == "__main__":
+    main()
