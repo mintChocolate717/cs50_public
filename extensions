@@ -1,0 +1,9 @@
+x = input("File name? ").casefold().strip()
+file = x[x.rfind(".")+1:]
+match file:
+    case "png" | "gif" : print(f"image/{file}")
+    case "jpg" | "jpeg" : print("image/jpeg")
+    case "pdf"|"zip":
+        print(f"application/{file}")
+    case "txt": print("text/plain")
+    case _: print("application/octet-stream")
