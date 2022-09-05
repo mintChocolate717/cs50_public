@@ -1,0 +1,22 @@
+from random import randint
+import sys
+
+while True:
+    try:
+        level = int(input("Level: "))
+        n = randint(1, level)
+        break
+    except ValueError: pass
+
+while True:
+    try:
+        guess = int(input("Guess: "))
+        if guess<0: pass
+        elif guess>n:
+            print("Too large!")
+            pass
+        elif guess<n:
+            print("Too small!")
+            pass
+        else: sys.exit("Just right!")
+    except ValueError: pass
