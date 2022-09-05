@@ -1,0 +1,49 @@
+from random import randint
+
+def main():
+    score = 0
+    n = get_level()
+    #for-loop for 10 questions
+    for i in range(10):
+        x, y = generate_integer(n)
+        answer = x + y
+        #counting variable to keep track of 3 wrong answers in a row
+        cnt=0
+        #asking for the acceptable user guess
+        while cnt<3:
+            try: guess = int(input(f"{x} + {y} = "))
+            except ValueError:
+                print("EEE")
+                cnt+=1
+                pass
+            else:
+                if guess != answer:
+                    print("EEE")
+                    cnt+=1
+                else:
+                    score+=1
+                    break
+        if cnt>=3: print(f"{x} + {y} = {answer}")
+    print(f"Score: {score}")
+
+#prompts (and, if need be, re-prompts) the user for a level and returns 1, 2, or 3
+def get_level():
+    level = 0
+    while not (level==1 or level==2 or level==3):
+        try: level = int(input("Level: "))
+        except ValueError: pass
+    return level
+
+#returns two randomly generated non-negative integers with level digits or raises a ValueError if level is not 1, 2, or 3
+def generate_integer(level):
+    if not (level==1 or level==2 or level==3): raise ValueError
+    elif level==1:
+        x = randint(0,9)
+        y = randint(0,9)
+    else:
+        x = randint(10**(level-1), (10**level)-1)
+        y = randint(10**(level-1), (10**level)-1)
+    return x, y
+
+if __name__ == "__main__":
+    main()
